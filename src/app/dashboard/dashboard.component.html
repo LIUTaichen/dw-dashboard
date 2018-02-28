@@ -1,15 +1,21 @@
   <div class="header" >
     <h1>Apps</h1>
   </div>
-  <mat-grid-list cols="3" rowHeight="2:1" gutterSize='20'>
-      <mat-grid-tile>
-        <app-app-card></app-app-card>
-      </mat-grid-tile>
-      <mat-grid-tile><app-app-card></app-app-card></mat-grid-tile>
-      <mat-grid-tile><app-app-card></app-app-card></mat-grid-tile>
-      <mat-grid-tile><app-app-card></app-app-card></mat-grid-tile>
-      <mat-grid-tile><app-app-card></app-app-card></mat-grid-tile>
-      <mat-grid-tile><app-app-card></app-app-card></mat-grid-tile>
-      <mat-grid-tile><app-app-card></app-app-card></mat-grid-tile>
-      <mat-grid-tile><app-app-card></app-app-card></mat-grid-tile>
-  </mat-grid-list>
+  <mat-sidenav-container   class="sidenav-container">
+      <mat-sidenav mode="side" opened>Sidenav content</mat-sidenav>
+      <mat-sidenav-content><div class="content">
+          <mat-grid-list cols="3" rowHeight="2:1" gutterSize='20'>
+              <mat-grid-tile>
+                <app-app-card></app-app-card>
+              </mat-grid-tile>
+              <mat-grid-tile><app-app-card></app-app-card></mat-grid-tile>
+              <mat-grid-tile><app-app-card></app-app-card></mat-grid-tile>
+              <mat-grid-tile><app-app-card></app-app-card></mat-grid-tile>
+              <mat-grid-tile><app-app-card></app-app-card></mat-grid-tile>
+              <mat-grid-tile><app-app-card></app-app-card></mat-grid-tile>
+              <mat-grid-tile><app-app-card></app-app-card></mat-grid-tile>
+              <mat-grid-tile><app-app-card></app-app-card></mat-grid-tile>
+          </mat-grid-list>
+        </div></mat-sidenav-content>
+  </mat-sidenav-container>
+

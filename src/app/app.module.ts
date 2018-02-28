@@ -1,5 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { AppComponent } from './app.component';
@@ -14,6 +16,8 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import {MatCardModule} from '@angular/material/card';
 import { TopMenuComponent } from './top-menu/top-menu.component';
 import { AppCardComponent } from './app-card/app-card.component';
+import { AppsComponent } from './apps/apps.component';
+import { AppService } from './app.service';
 
 
 @NgModule({
@@ -22,9 +26,12 @@ import { AppCardComponent } from './app-card/app-card.component';
     DashboardComponent,
     TopMenuComponent,
     AppCardComponent,
+    AppsComponent,
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    BrowserAnimationsModule,
     FlexLayoutModule,
     MatButtonModule,
     MatIconModule,
@@ -34,7 +41,9 @@ import { AppCardComponent } from './app-card/app-card.component';
     MatGridListModule,
     MatCardModule,
   ],
-  providers: [],
+  providers: [
+    AppService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
