@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
-import { App } from './app';
+import { AppInfo } from './app-info';
 import { APPS } from './mock-apps';
+import { Observable } from 'rxjs/Observable';
+import { of } from 'rxjs/observable/of';
 
 @Injectable()
 export class AppService {
 
-  getApps(): App[] {
-    return APPS;
+  getApps(): Observable<AppInfo[]> {
+    return of(APPS);
   }
 
   constructor() { }

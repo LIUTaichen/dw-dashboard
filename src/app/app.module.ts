@@ -18,6 +18,8 @@ import { TopMenuComponent } from './top-menu/top-menu.component';
 import { AppCardComponent } from './app-card/app-card.component';
 import { AppsComponent } from './apps/apps.component';
 import { AppService } from './app.service';
+import { MessagesComponent } from './messages/messages.component';
+import { MessageService } from './message.service';
 
 
 @NgModule({
@@ -27,6 +29,7 @@ import { AppService } from './app.service';
     TopMenuComponent,
     AppCardComponent,
     AppsComponent,
+    MessagesComponent,
   ],
   imports: [
     BrowserModule,
@@ -43,6 +46,7 @@ import { AppService } from './app.service';
   ],
   providers: [
     AppService,
+    MessageService,
   ],
   bootstrap: [AppComponent]
 })

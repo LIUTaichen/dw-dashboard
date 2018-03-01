@@ -1,6 +1,6 @@
-import { App } from './app';
+import { AppInfo } from './app-info';
 
-export const APPS: App[] = [
+export const APPS: AppInfo[] = [
   { id: 11,
     name: 'Mr. Nice',
     url: '/',
