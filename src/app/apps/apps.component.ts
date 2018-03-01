@@ -17,10 +17,6 @@ export class AppsComponent implements OnInit {
     desciption: 'Gps tracking portal',
     imageUrl: 'https://www.google.com/webpagethumbnail?c=63&d=https://portal.fleetagent.co.nz/&r=4&s=154:96&a=iOInTjgwSYbDwNxj-eflOdQN1A8'
   };
-  selectedApp: AppInfo;
-  onSelect(app: AppInfo): void {
-    this.selectedApp = app;
-  }
 
   getApps(): void {
     this.appService.getApps()

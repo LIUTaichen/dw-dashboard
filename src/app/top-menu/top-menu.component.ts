@@ -7,7 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class TopMenuComponent implements OnInit {
   @Input() nodes: String[];
-  constructor() { 
+  constructor() {
     this.nodes = ['Home', 'Notifications'];
   }
 

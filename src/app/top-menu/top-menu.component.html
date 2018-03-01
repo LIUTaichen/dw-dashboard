@@ -1,7 +1,9 @@
 <mat-toolbar color="primary" class="mat-elevation-z12">
     <mat-toolbar-row >
       <a *ngFor="let node of nodes" mat-button >{{node}}</a>
+      <a routerLink="/dashboard" mat-button >Dashboard</a>
+      <a routerLink="/apps" mat-button >Apps</a>
   </mat-toolbar-row>
 </mat-toolbar>
-  
-  
+
+

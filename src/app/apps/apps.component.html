@@ -1,6 +1,5 @@
-<app-app-card [app]="selectedApp"></app-app-card>
-<mat-grid-list cols="3" rowHeight="2:1" gutterSize='2'>
-    <mat-grid-tile *ngFor="let app of apps" (click)="onSelect(app)" [class.selected]="app === selectedApp">
+<mat-grid-list cols="3" rowHeight="2:1" gutterSize='2'>(
+    <mat-grid-tile *ngFor="let app of apps">
       <mat-card >
         <mat-card-header>
             <mat-card-title>{{app.name}}</mat-card-title>
@@ -10,6 +9,9 @@
             <p>
               {{app.desciption}}
             </p>
+            <a routerLink="/app/{{app.id}}">
+              <span class="badge">{{app.id}}</span> {{app.name}}
+            </a>
         </mat-card-content>
       </mat-card>
   </mat-grid-tile>
