@@ -1,0 +1,13 @@
+<div id="search-component">
+    <h4>App Search</h4>
+  
+    <input #searchBox id="search-box" (keyup)="search(searchBox.value)" />
+  
+    <ul class="search-result">
+      <li *ngFor="let app of apps$ | async" >
+        <a routerLink="/apps/{{app.id}}">
+          {{app.name}}
+        </a>
+      </li>
+    </ul>
+  </div>

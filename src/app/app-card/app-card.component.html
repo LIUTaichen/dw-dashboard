@@ -13,6 +13,8 @@
             <input [(ngModel)]="app.name" placeholder="name">
           </label>
       </div>
+      <button class="delete" title="delete app" (click)="delete(app)" mat-button>delete</button>
   </mat-card-content>
 </mat-card>
-<button (click)="goBack()">go back</button>
+<button (click)="goBack()" mat-button>go back</button>
+<button (click)="save()" mat-button>save</button>

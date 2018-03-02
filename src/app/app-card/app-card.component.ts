@@ -33,4 +33,15 @@ export class AppCardComponent implements OnInit {
     this.location.back();
   }
 
+  save(): void{
+    this.appService.updateApp(this.app)
+    .subscribe(() => this.goBack());
+  }
+
+  delete(app1: AppInfo): void {
+    console.log('in card component');
+    console.log(app1);
+    this.appService.deleteApp(app1).subscribe();
+  }
+
 }

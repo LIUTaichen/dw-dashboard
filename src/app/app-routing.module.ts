@@ -3,14 +3,16 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppsComponent } from './apps/apps.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AppCardComponent } from './app-card/app-card.component';
+import { MapComponent } from './map/map.component';
 
 
 
 const routes: Routes = [
   { path: 'apps', component: AppsComponent },
   { path: 'dashboard', component: DashboardComponent },
-  { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
+  { path: '', redirectTo: '/map', pathMatch: 'full' },
   { path: 'app/:id', component: AppCardComponent},
+  { path: 'map', component: MapComponent},
 ];
 @NgModule({
   imports: [

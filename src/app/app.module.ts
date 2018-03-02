@@ -1,8 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { Adal5Service, Adal5HTTPService } from 'adal-angular5';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './in-memory-data.service';
@@ -24,6 +25,9 @@ import { AppService } from './app.service';
 import { MessagesComponent } from './messages/messages.component';
 import { MessageService } from './message.service';
 import { AppRoutingModule } from './/app-routing.module';
+import { AppSearchComponent } from './app-search/app-search.component';
+import { LeafletModule } from '@asymmetrik/ngx-leaflet';
+import { MapComponent } from './map/map.component';
 
 
 @NgModule({
@@ -34,6 +38,8 @@ import { AppRoutingModule } from './/app-routing.module';
     AppCardComponent,
     AppsComponent,
     MessagesComponent,
+    AppSearchComponent,
+    MapComponent,
   ],
   imports: [
     BrowserModule,
@@ -48,11 +54,17 @@ import { AppRoutingModule } from './/app-routing.module';
     MatGridListModule,
     MatCardModule,
     AppRoutingModule,
-    InMemoryWebApiModule,
+    HttpClientModule,
+    HttpClientInMemoryWebApiModule.forRoot(
+      InMemoryDataService, { dataEncapsulation: false,  delay: 20  }
+    ),
+    LeafletModule.forRoot(),
   ],
   providers: [
     AppService,
     MessageService,
+    Adal5Service,
+    { provide: Adal5HTTPService, useFactory: Adal5HTTPService.factory, deps: [HttpClient, Adal5Service] }
   ],
   bootstrap: [AppComponent]
 })
