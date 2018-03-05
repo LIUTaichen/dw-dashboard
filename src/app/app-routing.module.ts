@@ -10,9 +10,9 @@ import { MapComponent } from './map/map.component';
 const routes: Routes = [
   { path: 'apps', component: AppsComponent },
   { path: 'dashboard', component: DashboardComponent },
-  { path: '', redirectTo: '/map', pathMatch: 'full' },
+  { path: '', redirectTo: '/maps', pathMatch: 'full' },
   { path: 'app/:id', component: AppCardComponent},
-  { path: 'map', component: MapComponent},
+  { path: 'maps', component: MapComponent},
 ];
 @NgModule({
   imports: [

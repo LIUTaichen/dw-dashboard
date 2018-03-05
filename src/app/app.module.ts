@@ -28,6 +28,7 @@ import { AppRoutingModule } from './/app-routing.module';
 import { AppSearchComponent } from './app-search/app-search.component';
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 import { MapComponent } from './map/map.component';
+import { GeofenceService } from './geofence.service';
 
 
 @NgModule({
@@ -64,7 +65,8 @@ import { MapComponent } from './map/map.component';
     AppService,
     MessageService,
     Adal5Service,
-    { provide: Adal5HTTPService, useFactory: Adal5HTTPService.factory, deps: [HttpClient, Adal5Service] }
+    { provide: Adal5HTTPService, useFactory: Adal5HTTPService.factory, deps: [HttpClient, Adal5Service] },
+    GeofenceService,
   ],
   bootstrap: [AppComponent]
 })
