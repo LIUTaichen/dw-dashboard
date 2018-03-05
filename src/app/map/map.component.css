@@ -1,15 +1,23 @@
-.flex-container {
-    display: flex;
-    flex-direction: row;
-    flex: 1 1 auto;
+flex-item {
+
+
   }
 
 .map{
-    flex-grow: 1;
-    flex: 1 1;
+    flex-grow: 5;
+    height: 100%;
 }
 
 app-map-list{
-    flex: 1;  
-    flex-grow: 1;
+  flex-grow: 1;
+  height:100%;
 }
+
+.flex-container{
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  align-content: stretch;
+}
+
+
