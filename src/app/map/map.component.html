@@ -1,9 +1,10 @@
 <div class="flex-container">
-  <app-map-list></app-map-list>
+  <app-map-list [plants]="plantsToList"></app-map-list>
   <div
     leaflet  class="map"
     [leafletOptions]="options"
-    [leafletLayers]="layers" >
+    [leafletLayers]="layers" 
+    (leafletMapReady)="onMapReady($event)">
   </div>
 </div>
 

@@ -1,8 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgZone } from '@angular/core';
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
-import { latLng, LatLng, tileLayer, Layer, polygon } from 'leaflet';
+import { latLng, LatLng, tileLayer, Layer, polygon, marker, icon, Map } from 'leaflet';
 import { GeofenceService } from '../geofence.service';
+import { PlantService } from '../plant.service';
 import { Geofence } from '../geofence';
+import booleanPointInPolygon  from '@turf/boolean-point-in-polygon';
+import { Coord, Feature, Polygon, MultiPolygon, Properties, polygon as turfPolygon } from '@turf/helpers';
+import { Plant } from '../plant';
+import  flip  from '@turf/flip';
+
 
 
 
@@ -17,6 +23,8 @@ export class MapComponent implements OnInit {
 
   geofences: Geofence[];
   layers: Layer[];
+  plants: Plant[] = new Array<Plant>();
+  plantsToList : Plant[];
 
   options = {
     layers: [
@@ -31,20 +39,21 @@ export class MapComponent implements OnInit {
     center: latLng(-36.914827, 174.8072903)
   };
 
-  constructor(private geofenceService: GeofenceService) { }
+  constructor(private geofenceService: GeofenceService,
+  private plantService: PlantService,
+  private zone: NgZone) { }
+  
 
   ngOnInit() {
     this.layers = new Array<Layer>();
     this.getGeofences();
-    this.geofenceService.testApi();
+    this.getPlants();
   }
 
   getGeofences(): void {
     this.geofenceService.getGeofences()
       .subscribe(returnedGeofences => {
         this.geofences = returnedGeofences;
-        console.log(this.geofences);
-        console.log(this.layers);
         this.geofences.forEach(fence =>{
             let mapFeature =  polygon(fence.latlngs, {
               color: 'red',
@@ -53,10 +62,62 @@ export class MapComponent implements OnInit {
             });
             mapFeature.bindPopup(fence.description);
             mapFeature.name = fence.name;
+            mapFeature.on('click', e =>{
+            let newList = new Array<Plant>();
+              this.plants.forEach(element => {
+                console.log(element);
+                let point: Coord = element.latlng;
+                if(booleanPointInPolygon(point,flip(mapFeature.toGeoJSON()))){
+                  newList.push(element);
+                }
+              });
+              this.zone.run(() => {
+                this.plantsToList = newList;
+              });
+              
+            });
             this.layers.push(mapFeature);
         })
         
       });
+  }
+
+  getPlants(): void {
+      this.plantService.getPlants()
+      .subscribe(returnedPlants => {
+        this.plants = returnedPlants;
+        returnedPlants.forEach(plant => {
+          let mapFeature = marker(plant.latlng, {
+            title: plant.fleetNo,
+            icon: icon({
+              iconSize: [ 25, 41 ],
+              iconAnchor: [ 13, 41 ],
+              iconUrl: 'leaflet/marker-icon.png',
+              shadowUrl: 'leaflet/marker-shadow.png'
+            })
+          }).bindPopup(plant.fleetNo);
+         
+          this.layers.push(mapFeature);
+          
+        })
+      })
+  }
+
+  onMapReady(map: Map) {
+    console.log("map ready");
+    map.on('moveend', e => {
+      let newList = new Array<Plant>();
+      this.plants.forEach(element => {
+        if(map.getBounds().contains(element.latlng)){
+          newList.push(element);
+        }
+      });
+      this.zone.run(() => {
+        this.plantsToList = newList;
+      });
+      
+
+   });
   }
 
 }

@@ -17,6 +17,7 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { MatListModule} from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
 import { TopMenuComponent } from './top-menu/top-menu.component';
 import { AppCardComponent } from './app-card/app-card.component';
@@ -30,6 +31,7 @@ import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 import { MapComponent } from './map/map.component';
 import { GeofenceService } from './geofence.service';
 import { MapListComponent } from './map-list/map-list.component';
+import { PlantService } from './plant.service';
 
 
 @NgModule({
@@ -55,6 +57,7 @@ import { MapListComponent } from './map-list/map-list.component';
     MatSidenavModule,
     MatToolbarModule,
     MatGridListModule,
+    MatListModule,
     MatCardModule,
     AppRoutingModule,
     HttpClientModule,
@@ -69,6 +72,7 @@ import { MapListComponent } from './map-list/map-list.component';
     Adal5Service,
     { provide: Adal5HTTPService, useFactory: Adal5HTTPService.factory, deps: [HttpClient, Adal5Service] },
     GeofenceService,
+    PlantService,
   ],
   bootstrap: [AppComponent]
 })

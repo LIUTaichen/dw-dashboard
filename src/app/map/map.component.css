@@ -4,20 +4,26 @@ flex-item {
   }
 
 .map{
-    flex-grow: 5;
+    flex-grow: 1;
     height: 100%;
 }
 
-app-map-list{
-  flex-grow: 1;
-  height:100%;
-}
 
 .flex-container{
   display: flex;
   flex-direction: row;
   height: 100%;
   align-content: stretch;
+  width: 100%;
 }
 
 
+
+:host{
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    flex-grow : 1;
+    width:100%;
+  }
+  

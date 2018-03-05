@@ -16,15 +16,6 @@ app-root{
   width: 100%;
 }
 
-app-map{
-  background: green;
-  display: flex;
-  flex-direction: row;
-  align-items: stretch;
-  flex-grow : 1;
-  width:100%;
-}
-
 .outlet{
   display : flex;
   height: 100%;

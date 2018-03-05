@@ -22,7 +22,6 @@ export class GeofenceService {
       tap(geofences => console.log(geofences)),
       catchError(error => of(`Bad Promise: ${error}`))
     ).map(geofences => {
-      console.log(geofences);
       let fences = new Array<Geofence>();
       geofences.forEach(json =>{
           let geofence: Geofence = new  Geofence();
@@ -35,7 +34,7 @@ export class GeofenceService {
             return;
           }
           let latLngs = [];
-             console.log(polygon.coordinates);
+             //console.log(polygon.coordinates);
              if(polygon.type === 'Polygon'){
                 polygon.coordinates.forEach(pointsArray => {
                   let simplePoly = [];
