@@ -1,0 +1,15 @@
+.flex-container {
+    display: flex;
+    flex-direction: row;
+    flex: 1 1 auto;
+  }
+
+.map{
+    flex-grow: 1;
+    flex: 1 1;
+}
+
+app-map-list{
+    flex: 1;  
+    flex-grow: 1;
+}

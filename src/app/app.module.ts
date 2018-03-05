@@ -29,6 +29,7 @@ import { AppSearchComponent } from './app-search/app-search.component';
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 import { MapComponent } from './map/map.component';
 import { GeofenceService } from './geofence.service';
+import { MapListComponent } from './map-list/map-list.component';
 
 
 @NgModule({
@@ -41,6 +42,7 @@ import { GeofenceService } from './geofence.service';
     MessagesComponent,
     AppSearchComponent,
     MapComponent,
+    MapListComponent,
   ],
   imports: [
     BrowserModule,
@@ -57,7 +59,7 @@ import { GeofenceService } from './geofence.service';
     AppRoutingModule,
     HttpClientModule,
     HttpClientInMemoryWebApiModule.forRoot(
-      InMemoryDataService, { dataEncapsulation: false,  delay: 20  }
+      InMemoryDataService, { dataEncapsulation: false,  delay: 20, passThruUnknownUrl: true  }
     ),
     LeafletModule.forRoot(),
   ],

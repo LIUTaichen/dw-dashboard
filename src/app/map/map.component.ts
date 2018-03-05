@@ -5,6 +5,7 @@ import { GeofenceService } from '../geofence.service';
 import { Geofence } from '../geofence';
 
 
+
 @Component({
   selector: 'app-map',
   templateUrl: './map.component.html',
@@ -35,6 +36,7 @@ export class MapComponent implements OnInit {
   ngOnInit() {
     this.layers = new Array<Layer>();
     this.getGeofences();
+    this.geofenceService.testApi();
   }
 
   getGeofences(): void {
@@ -50,7 +52,7 @@ export class MapComponent implements OnInit {
               fillOpacity: 0.5,
             });
             mapFeature.bindPopup(fence.description);
-            mapFeature.Name = fence.name;
+            mapFeature.name = fence.name;
             this.layers.push(mapFeature);
         })
         
