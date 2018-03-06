@@ -3,6 +3,7 @@
       <a *ngFor="let node of nodes" mat-button >{{node}}</a>
       <a routerLink="/dashboard" mat-button >Dashboard</a>
       <a routerLink="/apps" mat-button >Apps</a>
+      <a routerLink="/maps" mat-button >Maps</a>
       <div class="spacer"></div>
       <a   *ngIf="user" mat-button (click)="logout()" >Logout</a>
       <a *ngIf="user"  mat-button>{{user}}</a>

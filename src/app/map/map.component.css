@@ -21,9 +21,12 @@ flex-item {
 
 :host{
     display: flex;
-    flex-direction: row;
     align-items: stretch;
     flex-grow : 1;
     width:100%;
+    flex-flow : column;
   }
   
+  .progress {
+    
+  }

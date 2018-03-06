@@ -25,6 +25,7 @@ export class MapComponent implements OnInit {
   layers: Layer[];
   plants: Plant[] = new Array<Plant>();
   plantsToList : Plant[];
+  inProgress: boolean = true;
 
   options = {
     layers: [
@@ -100,6 +101,10 @@ export class MapComponent implements OnInit {
           this.layers.push(mapFeature);
           
         })
+        this.zone.run(() => {
+          this.inProgress = false;
+        });
+        
       })
   }
 
