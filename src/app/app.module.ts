@@ -19,6 +19,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatListModule} from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
+import { MatMenuModule } from '@angular/material/menu';
 import { TopMenuComponent } from './top-menu/top-menu.component';
 import { AppCardComponent } from './app-card/app-card.component';
 import { AppsComponent } from './apps/apps.component';
@@ -32,6 +33,8 @@ import { MapComponent } from './map/map.component';
 import { GeofenceService } from './geofence.service';
 import { MapListComponent } from './map-list/map-list.component';
 import { PlantService } from './plant.service';
+import { TaskListComponent } from './task-list/task-list.component';
+import { TaskService } from './task.service';
 
 
 @NgModule({
@@ -45,6 +48,7 @@ import { PlantService } from './plant.service';
     AppSearchComponent,
     MapComponent,
     MapListComponent,
+    TaskListComponent,
   ],
   imports: [
     BrowserModule,
@@ -59,6 +63,7 @@ import { PlantService } from './plant.service';
     MatGridListModule,
     MatListModule,
     MatCardModule,
+    MatMenuModule,
     AppRoutingModule,
     HttpClientModule,
     HttpClientInMemoryWebApiModule.forRoot(
@@ -73,6 +78,7 @@ import { PlantService } from './plant.service';
     { provide: Adal5HTTPService, useFactory: Adal5HTTPService.factory, deps: [HttpClient, Adal5Service] },
     GeofenceService,
     PlantService,
+    TaskService,
   ],
   bootstrap: [AppComponent]
 })
