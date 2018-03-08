@@ -35,6 +35,9 @@ import { MapListComponent } from './map-list/map-list.component';
 import { PlantService } from './plant.service';
 import { TaskListComponent } from './task-list/task-list.component';
 import { TaskService } from './task.service';
+import { ProjectService } from './project.service';
+import { InstallationStatusMapComponent } from './installation-status-map/installation-status-map.component';
+import { InstallationStatusListComponent } from './installation-status-list/installation-status-list.component';
 
 
 @NgModule({
@@ -49,6 +52,8 @@ import { TaskService } from './task.service';
     MapComponent,
     MapListComponent,
     TaskListComponent,
+    InstallationStatusMapComponent,
+    InstallationStatusListComponent,
   ],
   imports: [
     BrowserModule,
@@ -79,6 +84,7 @@ import { TaskService } from './task.service';
     GeofenceService,
     PlantService,
     TaskService,
+    ProjectService,
   ],
   bootstrap: [AppComponent]
 })

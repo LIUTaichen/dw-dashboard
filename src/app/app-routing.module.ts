@@ -5,6 +5,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { AppCardComponent } from './app-card/app-card.component';
 import { MapComponent } from './map/map.component';
 import { TaskListComponent } from './task-list/task-list.component';
+import { InstallationStatusMapComponent } from './installation-status-map/installation-status-map.component';
 
 
 
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: 'app/:id', component: AppCardComponent},
   { path: 'maps', component: MapComponent},
   { path: 'tasks', component: TaskListComponent},
+  { path: 'maps/installation', component: InstallationStatusMapComponent},
 ];
 @NgModule({
   imports: [

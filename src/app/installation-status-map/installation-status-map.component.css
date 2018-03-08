@@ -1,0 +1,23 @@
+.map{
+    flex-grow: 1;
+    height: 100%;
+}
+
+
+.flex-container{
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  align-content: stretch;
+  width: 100%;
+}
+
+
+
+:host{
+    display: flex;
+    align-items: stretch;
+    flex-grow : 1;
+    width:100%;
+    flex-flow : column;
+  }

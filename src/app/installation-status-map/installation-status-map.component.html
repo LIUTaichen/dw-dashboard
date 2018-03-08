@@ -1,0 +1,12 @@
+<div *ngIf='inProgress' class='progress'>
+  <mat-progress-bar mode="indeterminate" ></mat-progress-bar>
+</div>
+<div class="flex-container">
+  <app-installation-status-list [plants]="plantsToList"></app-installation-status-list>
+  <div
+    leaflet  class="map"
+    [leafletOptions]="options"
+    [leafletLayers]="layers" 
+    (leafletMapReady)="onMapReady($event)">
+  </div>
+</div>
