@@ -12,4 +12,6 @@ export class InstallationStatusListComponent implements OnInit {
   ngOnInit() {
   }
 
+  
+
 }
