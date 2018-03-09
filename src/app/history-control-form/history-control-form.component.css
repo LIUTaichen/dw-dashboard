@@ -1,0 +1,31 @@
+.form-container {
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    background: white;
+  }
+  
+.form-container > * {
+width: 100%;
+}
+
+.time{
+    width: 80px;
+}
+
+.input{
+
+}
+
+.time-container{
+    display: flex;
+    flex-direction: row;
+}
+
+.colon{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left:10px;
+    padding-right:10px;
+}

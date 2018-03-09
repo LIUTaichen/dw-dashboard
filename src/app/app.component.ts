@@ -33,13 +33,13 @@ export class AppComponent {
       // Log the user information to the console
       console.log('username ' + this.service.userInfo.username);
       this.username = this.service.userInfo.username;
-      console.log('authenticated: ' + this.service.userInfo.authenticated);
+      // console.log('authenticated: ' + this.service.userInfo.authenticated);
 
-      console.log('name: ' + this.service.userInfo.profile.name);
+      // console.log('name: ' + this.service.userInfo.profile.name);
 
-      console.log('token: ' + this.service.userInfo.token);
+      // console.log('token: ' + this.service.userInfo.token);
 
-      console.log(this.service.userInfo.profile);
+      // console.log(this.service.userInfo.profile);
     }
   }
 

@@ -112,7 +112,10 @@ decrementCountdown(){
   if(countdownLatch === 0){
     console.log('all data fetched');
     console.log(this.map);
+    this.inProgress = false;
   }
 }
+
+
 
 }

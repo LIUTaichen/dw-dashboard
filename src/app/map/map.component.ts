@@ -66,7 +66,7 @@ export class MapComponent implements OnInit {
             mapFeature.on('click', e =>{
             let newList = new Array<Plant>();
               this.plants.forEach(element => {
-                console.log(element);
+                //console.log(element);
                 let point: Coord = element.latlng;
                 if(booleanPointInPolygon(point,flip(mapFeature.toGeoJSON()))){
                   newList.push(element);

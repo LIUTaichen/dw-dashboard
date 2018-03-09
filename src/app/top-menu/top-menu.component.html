@@ -2,13 +2,13 @@
     <mat-toolbar-row >
       <a *ngFor="let node of nodes" mat-button >{{node}}</a>
       <a routerLink="/dashboard" mat-button >Dashboard</a>
-      <a routerLink="/tasks" mat-button >Tasks</a>
-      <a routerLink="/maps" mat-button >Maps</a>
+      <a routerLink="/tasks" mat-button >Dracula</a>
       <mat-menu #appMenu="matMenu">
-        <button mat-menu-item>Plants map</button>
-        <button mat-menu-item>Outstanding plants map</button>
+        <button mat-menu-item routerLink="/maps">Plants map</button>
+        <a mat-menu-item href="https://liutaichen.github.io/mapping/"  target="_blank">Outstanding plants map</a>
+        <button mat-menu-item routerLink="/maps/history">Track History</button>
       </mat-menu>
-      <button mat-button [matMenuTriggerFor]="appMenu">Menu</button>
+      <button mat-button [matMenuTriggerFor]="appMenu">Maps</button>
       <div class="spacer"></div>
       <a   *ngIf="user" mat-button (click)="logout()" >Logout</a>
       <a *ngIf="user"  mat-button>{{user}}</a>

@@ -15,7 +15,7 @@ export class PlantService {
   getPlants(): Observable<Plant[]> {
     return this.http.get<any>(this.plantsUrl,)
       .pipe(
-      tap(plants => console.log(plants)),
+      tap(plants => console.log(plants.length)),
       catchError(error => of(`Bad Promise: ${error}`))
     ).map(plantsString => {
       let plants = new Array<Plant>();

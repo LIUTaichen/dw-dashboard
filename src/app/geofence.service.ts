@@ -19,7 +19,7 @@ export class GeofenceService {
     };
     return this.http.get<any>(this.geofencesUrl, httpOptions)
       .pipe(
-      tap(geofences => console.log(geofences)),
+      tap(geofences => console.log(geofences.length)),
       catchError(error => of(`Bad Promise: ${error}`))
     ).map(geofences => {
       let fences = new Array<Geofence>();

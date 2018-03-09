@@ -20,6 +20,11 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatListModule} from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { TopMenuComponent } from './top-menu/top-menu.component';
 import { AppCardComponent } from './app-card/app-card.component';
 import { AppsComponent } from './apps/apps.component';
@@ -38,6 +43,9 @@ import { TaskService } from './task.service';
 import { ProjectService } from './project.service';
 import { InstallationStatusMapComponent } from './installation-status-map/installation-status-map.component';
 import { InstallationStatusListComponent } from './installation-status-list/installation-status-list.component';
+import { TrackingService } from './tracking.service';
+import { HistoryTravellerComponent } from './history-traveller/history-traveller.component';
+import { HistoryControlFormComponent } from './history-control-form/history-control-form.component';
 
 
 @NgModule({
@@ -54,6 +62,8 @@ import { InstallationStatusListComponent } from './installation-status-list/inst
     TaskListComponent,
     InstallationStatusMapComponent,
     InstallationStatusListComponent,
+    HistoryTravellerComponent,
+    HistoryControlFormComponent,
   ],
   imports: [
     BrowserModule,
@@ -69,6 +79,11 @@ import { InstallationStatusListComponent } from './installation-status-list/inst
     MatListModule,
     MatCardModule,
     MatMenuModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatAutocompleteModule,
     AppRoutingModule,
     HttpClientModule,
     HttpClientInMemoryWebApiModule.forRoot(
@@ -85,6 +100,7 @@ import { InstallationStatusListComponent } from './installation-status-list/inst
     PlantService,
     TaskService,
     ProjectService,
+    TrackingService,
   ],
   bootstrap: [AppComponent]
 })

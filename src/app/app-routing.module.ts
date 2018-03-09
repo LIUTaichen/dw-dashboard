@@ -6,6 +6,7 @@ import { AppCardComponent } from './app-card/app-card.component';
 import { MapComponent } from './map/map.component';
 import { TaskListComponent } from './task-list/task-list.component';
 import { InstallationStatusMapComponent } from './installation-status-map/installation-status-map.component';
+import { HistoryTravellerComponent } from './history-traveller/history-traveller.component';
 
 
 
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: 'maps', component: MapComponent},
   { path: 'tasks', component: TaskListComponent},
   { path: 'maps/installation', component: InstallationStatusMapComponent},
+  { path: 'maps/history', component: HistoryTravellerComponent},
 ];
 @NgModule({
   imports: [
