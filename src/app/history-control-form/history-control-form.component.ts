@@ -33,7 +33,8 @@ export class HistoryControlFormComponent implements OnInit {
 
   onGo(): void {
     console.log('onGo!');
-    console.log(this.control.value);
+    //TODO: watch out for null pointer
+    console.log(this.control.value.id);
     console.log(this.date);
     console.log(this.hours);
     console.log(this.minutes);
