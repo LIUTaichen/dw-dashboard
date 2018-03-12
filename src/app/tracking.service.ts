@@ -7,7 +7,6 @@ import { catchError, map, tap } from 'rxjs/operators';
 @Injectable()
 export class TrackingService {
 
-  
 
   constructor(private http: HttpClient,) { }
 
@@ -35,5 +34,7 @@ export class TrackingService {
     }
     return result;
 }
+
+
 
 }
