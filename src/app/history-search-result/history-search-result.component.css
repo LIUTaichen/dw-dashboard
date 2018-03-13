@@ -1,0 +1,29 @@
+.header{
+    font-weight: 400;
+    padding: 20px 20px 20px 20px;
+    background-color: #fafafa;
+    color: rgba(0, 0, 0, 0.54);
+    font-size: 16px;
+}
+
+.form-card{
+    padding:0px;
+    width: 100%;
+}
+
+  
+.container > * {
+    width: 100%;
+}
+
+.container{
+    width: 100%;
+    max-width: 260px;
+    display: flex;
+    flex-direction: column;
+    background: white;
+}
+
+.form-container{
+    padding: 30px;
+}

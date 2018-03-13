@@ -1,0 +1,13 @@
+<div class="container">
+  <mat-card  mat-elevation-z8 class="form-card" *ngIf="result">
+    <div class='header'>Result</div>
+    <div class="form-container">
+      <div >
+        <p>{{result.status}}</p>
+        <p>{{result.info}}</p>
+        <p *ngIf="result.speed !== null">Speed: {{result.speed}} KM/h</p>
+        <p *ngIf="result.stopStartTime">Stopped from {{result.stopStartTime | date:'short'}} to {{result.stopEndTime | date:'short'}} </p>
+      </div>
+  </div>
+  </mat-card>
+</div>

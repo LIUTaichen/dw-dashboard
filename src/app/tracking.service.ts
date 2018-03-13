@@ -35,6 +35,15 @@ export class TrackingService {
     return result;
 }
 
+getPosition(vehicleId : string, date: Date): Observable<any> {
+  const trackingApiUrl = 'http://localhost:3001/position?';
+  console.log('converted date to ', date.toISOString());
+  let queryString = trackingApiUrl +'vehicleId='+vehicleId +"&date="+date.toISOString();
+  console.log(queryString);
+  return this.http.get<any>(queryString);
+}
+
+
 
 
 }

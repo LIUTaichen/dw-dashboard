@@ -13,10 +13,6 @@ width: 100%;
     width: 80px;
 }
 
-.input{
-
-}
-
 .time-container{
     display: flex;
     flex-direction: row;
@@ -34,4 +30,28 @@ width: 100%;
     padding: 20px;
     background: white;
     height: 100%;
+    display: flex;
+    flex-direction: column;
+    width: 260px;
+}
+
+.form-card{
+    padding:0px;
+}
+
+.header{
+    font-weight: 400;
+    padding: 20px 20px 20px 20px;
+    background-color: #fafafa;
+    color: rgba(0, 0, 0, 0.54);
+    font-size: 16px;
+}
+
+.spacer{
+    height:10px;
+}
+
+
+.progress{
+    width:100%;
 }

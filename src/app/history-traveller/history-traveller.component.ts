@@ -49,4 +49,24 @@ export class HistoryTravellerComponent implements OnInit {
     //this.decrementCountdown();
   }
 
+  showPosition(input: any){
+    if(input === null){
+      console.log('empty event payload');
+      return;
+    }
+    this.map.panTo([input.lat, input.lng]);
+    console.log("in parent, getting ", input);
+    let mapFeature = marker([input.lat, input.lng], {
+      icon: icon({
+        iconSize: [ 25, 41 ],
+        iconAnchor: [ 13, 41 ],
+        iconUrl: 'leaflet/marker-icon.png',
+        shadowUrl: 'leaflet/marker-shadow.png'
+      })
+    }).bindPopup('<div>Status : ' + input.status + '</div><div> ' + input.info + ' </div><div>Stopped from ' + new Date(input.stopStartTime) + ' to ' + new Date(input.stopEndTime) + '</div>');
+   
+    this.layers.push(mapFeature);
+    
+  }
+
 }

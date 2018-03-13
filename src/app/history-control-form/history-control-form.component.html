@@ -1,31 +1,46 @@
-<div class="container">
-  <mat-toolbar>Find a Vehicle</mat-toolbar>
-  <div class="form-container">
+<div [class.mat-elevation-z2] class="container">
+  <mat-card mat-elevation-z8 class="form-card">
+    <form>
+      <div class='header'>Find a Vehicle</div>
+      <div class="form-container">
+        <mat-progress-bar class="progress" mode="indeterminate" [style.visibility]="regoFieldReady ? 'hidden' : 'visible'"></mat-progress-bar>
+        <mat-form-field [style.visibility]="regoFieldReady ? 'visible' : 'hidden'">
+          <input matInput type="text" required placeholder="Rego" [formControl]="control" [matAutocomplete]="auto">
+        </mat-form-field>
+        <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayVehicle">
+          <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+            {{option.fleetNo }}
+          </mat-option>
+        </mat-autocomplete>
 
-  <mat-form-field>
-    <input matInput type="text"  placeholder="Rego" [formControl]="control" [matAutocomplete]="auto">
-  </mat-form-field>
-  <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayVehicle" >
-      <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
-        {{option.fleetNo }}
-      </mat-option>
-    </mat-autocomplete>
+        <mat-form-field>
+          <input matInput [matDatepicker]="picker" required placeholder="Choose a date" [(ngModel)]="date" name="date">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+        <div class="time-container">
+          <mat-form-field class="time">
+            <input matInput placeholder="Hours" required maxlength="2" [(ngModel)]="hours" (keyup)="processKeyUp($event, minutesInput)"
+              name="hours" />
+          </mat-form-field>
+          <div class="colon">
+            <span> : </span>
+          </div>
+          <mat-form-field class="time">
+            <input matInput placeholder="Minutes" required maxlength="2" [(ngModel)]="minutes" #minutesInput name="minutes" />
+          </mat-form-field>
+        </div>
+        <div>
+          <button mat-button (click)="onClear()">Clear</button>
+          <button mat-raised-button color="primary" (click)="onGo()">Go!</button>
+        </div>
+      </div>
+    </form>
+  </mat-card>
+  <mat-progress-bar class="progress" mode="indeterminate" *ngIf="showProgress"></mat-progress-bar>
+  <div class="spacer"></div>
 
-  <mat-form-field>
-      <input matInput [matDatepicker]="picker" placeholder="Choose a date" [(ngModel)]="date">
-      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-datepicker #picker></mat-datepicker>
-  </mat-form-field>
-  <div class="time-container">
-      <mat-form-field   class="time">
-          <input matInput placeholder="Hours" value="" maxlength="2" [(ngModel)]="hours"/>
-      </mat-form-field>
-      <div class="colon"><span> : </span></div>
-      <mat-form-field class="time" >
-          <input matInput placeholder="Minutes" value="" maxlength="2" [(ngModel)]="minutes" />
-      </mat-form-field>
-  </div>
-  <div><button mat-button (click)="onClear()">Clear</button>
-    <button mat-raised-button color="primary" (click)="onGo()" >Go!</button></div>
-  </div>
+  <app-history-search-result [result]="result"></app-history-search-result>
+
+
 </div>

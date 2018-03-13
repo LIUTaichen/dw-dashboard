@@ -25,6 +25,9 @@ import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatSnackBarModule} from '@angular/material';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { TopMenuComponent } from './top-menu/top-menu.component';
 import { AppCardComponent } from './app-card/app-card.component';
 import { AppsComponent } from './apps/apps.component';
@@ -46,6 +49,7 @@ import { InstallationStatusListComponent } from './installation-status-list/inst
 import { TrackingService } from './tracking.service';
 import { HistoryTravellerComponent } from './history-traveller/history-traveller.component';
 import { HistoryControlFormComponent } from './history-control-form/history-control-form.component';
+import { HistorySearchResultComponent } from './history-search-result/history-search-result.component';
 
 
 @NgModule({
@@ -64,6 +68,7 @@ import { HistoryControlFormComponent } from './history-control-form/history-cont
     InstallationStatusListComponent,
     HistoryTravellerComponent,
     HistoryControlFormComponent,
+    HistorySearchResultComponent,
   ],
   imports: [
     BrowserModule,
@@ -85,6 +90,9 @@ import { HistoryControlFormComponent } from './history-control-form/history-cont
     MatDatepickerModule,
     MatNativeDateModule,
     MatAutocompleteModule,
+    MatSnackBarModule,
+    MatDividerModule,
+    MatProgressSpinnerModule,
     AppRoutingModule,
     HttpClientModule,
     HttpClientInMemoryWebApiModule.forRoot(
