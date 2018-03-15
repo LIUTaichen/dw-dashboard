@@ -2,7 +2,9 @@
   <mat-progress-bar mode="indeterminate" ></mat-progress-bar>
 </div>
 <div class="flex-container">
-  <app-history-control-form [class.mat-elevation-z0] (onGoClick) = "showPosition($event)"></app-history-control-form>
+  <app-history-control-form [class.mat-elevation-z0] (onGoClick) = "showPosition($event)" (onClearClick)="clearMap($event)">
+
+  </app-history-control-form>
   <div
     leaflet  class="map"
     [leafletOptions]="options"

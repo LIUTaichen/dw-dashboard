@@ -5,8 +5,9 @@
       <div >
         <p>{{result.status}}</p>
         <p>{{result.info}}</p>
-        <p *ngIf="result.speed !== null">Speed: {{result.speed}} KM/h</p>
+        <p *ngIf="result.speed || result.speed===0">Speed: {{result.speed}} KM/h</p>
         <p *ngIf="result.stopStartTime">Stopped from {{result.stopStartTime | date:'short'}} to {{result.stopEndTime | date:'short'}} </p>
+        <p *ngIf="result.timestamp">Showing location at {{result.timestamp | date:'short' }} </p>
       </div>
   </div>
   </mat-card>

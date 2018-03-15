@@ -11,7 +11,7 @@ export class TrackingService {
   constructor(private http: HttpClient,) { }
 
   getGoogleSheetPlantList(): Observable<any> {
-    const sheetsDataUrl = 'http://localhost:3001/';
+    const sheetsDataUrl = 'https://dempseywoodgps.tk/api/';
     return this.http.get<any>(sheetsDataUrl,)
       .pipe(
       tap(plants => console.log(plants.length)),
@@ -36,7 +36,7 @@ export class TrackingService {
 }
 
 getPosition(vehicleId : string, date: Date): Observable<any> {
-  const trackingApiUrl = 'http://localhost:3001/position?';
+  const trackingApiUrl = 'https://dempseywoodgps.tk/api/position?';
   console.log('converted date to ', date.toISOString());
   let queryString = trackingApiUrl +'vehicleId='+vehicleId +"&date="+date.toISOString();
   console.log(queryString);

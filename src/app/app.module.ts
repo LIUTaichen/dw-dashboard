@@ -28,6 +28,7 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatSnackBarModule} from '@angular/material';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
 import { TopMenuComponent } from './top-menu/top-menu.component';
 import { AppCardComponent } from './app-card/app-card.component';
 import { AppsComponent } from './apps/apps.component';
@@ -50,6 +51,7 @@ import { TrackingService } from './tracking.service';
 import { HistoryTravellerComponent } from './history-traveller/history-traveller.component';
 import { HistoryControlFormComponent } from './history-control-form/history-control-form.component';
 import { HistorySearchResultComponent } from './history-search-result/history-search-result.component';
+import { PlantNumberValidatorDirective } from './plant-number-validator/plant-number-validator.directive';
 
 
 @NgModule({
@@ -69,6 +71,7 @@ import { HistorySearchResultComponent } from './history-search-result/history-se
     HistoryTravellerComponent,
     HistoryControlFormComponent,
     HistorySearchResultComponent,
+    PlantNumberValidatorDirective,
   ],
   imports: [
     BrowserModule,
@@ -110,6 +113,7 @@ import { HistorySearchResultComponent } from './history-search-result/history-se
     TaskService,
     ProjectService,
     TrackingService,
+    {provide: MAT_DATE_LOCALE, useValue: 'en-NZ'},
   ],
   bootstrap: [AppComponent]
 })

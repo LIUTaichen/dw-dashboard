@@ -1,26 +1,26 @@
 <div [class.mat-elevation-z2] class="container">
   <mat-card mat-elevation-z8 class="form-card">
-    <form>
+    <form #historyForm="ngForm">
       <div class='header'>Find a Vehicle</div>
       <div class="form-container">
         <mat-progress-bar class="progress" mode="indeterminate" [style.visibility]="regoFieldReady ? 'hidden' : 'visible'"></mat-progress-bar>
         <mat-form-field [style.visibility]="regoFieldReady ? 'visible' : 'hidden'">
-          <input matInput type="text" required placeholder="Rego" [formControl]="control" [matAutocomplete]="auto">
+          <input matInput type="text" required placeholder="Plant Number" [formControl]="plantControl" [matAutocomplete]="auto">
         </mat-form-field>
-        <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayVehicle">
+        <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayVehicle" autoActiveFirstOption >
           <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
             {{option.fleetNo }}
           </mat-option>
         </mat-autocomplete>
 
         <mat-form-field>
-          <input matInput [matDatepicker]="picker" required placeholder="Choose a date" [(ngModel)]="date" name="date">
+          <input matInput [matDatepicker]="picker" required placeholder="Date" [(ngModel)]="date" name="date" [max]="maxDate">
           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
         <div class="time-container">
           <mat-form-field class="time">
-            <input matInput placeholder="Hours" required maxlength="2" [(ngModel)]="hours" (keyup)="processKeyUp($event, minutesInput)"
+            <input matInput placeholder="Hours" required maxlength="2" [(ngModel)]="hours" #hoursInput (change)="processChange(hoursInput.value, minutesInput)"
               name="hours" />
           </mat-form-field>
           <div class="colon">
@@ -31,8 +31,8 @@
           </mat-form-field>
         </div>
         <div>
-          <button mat-button (click)="onClear()">Clear</button>
-          <button mat-raised-button color="primary" (click)="onGo()">Go!</button>
+          <button mat-button (click)="onClear()" type="reset">Clear</button>
+          <button mat-raised-button type="submit" color="primary" (click)="onGo()" [disabled]="!historyForm.form.valid">Go!</button>
         </div>
       </div>
     </form>

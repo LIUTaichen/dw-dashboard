@@ -20,16 +20,19 @@ const localstorageKey : string = 'historyFormControlValues';
 export class HistoryControlFormComponent implements OnInit {
   
   vehicleId: number;
+  selectedPlant: Plant;
   date: Date;
   hours: number;
   minutes: number;
-  control: FormControl = new FormControl();
+  plantControl: FormControl = new FormControl(this.selectedPlant);
   options: Plant[] = new Array<Plant>();
   filteredOptions: Observable<Plant[]>;
   regoFieldReady: boolean = false;
   result: any;
   showProgress: boolean = false;
+  maxDate : Date = new Date();
   @Output() onGoClick = new EventEmitter<any>();
+  @Output() onClearClick = new EventEmitter<any>();
 
   constructor(
     private plantService: PlantService,
@@ -43,10 +46,10 @@ export class HistoryControlFormComponent implements OnInit {
       this.date = new Date(values.date);
       this.hours = values.hours;
       this.minutes = values.minutes;
-      this.control.setValue(values.controlValue);
+      this.plantControl.setValue(values.controlValue);
     }
     this.getVehicles();
-    this.filteredOptions = this.control.valueChanges
+    this.filteredOptions = this.plantControl.valueChanges
     .pipe(
       startWith(''),
       map(val => this.filter(val))
@@ -55,21 +58,27 @@ export class HistoryControlFormComponent implements OnInit {
   }
 
   onGo(): void {
+    if(!this.plantControl.value || !this.plantControl.value.id){
+      this.snackBar.open("Please enter a valid rego.", '', {
+        duration: 2000,
+      });
+      return;
+    }
     this.showProgress = true;
     this.result = null;
     console.log('onGo!');
     //TODO: watch out for null pointer
-    if(this.control.value !== null){
-      console.log(this.control.value.id);
+    if(this.plantControl.value !== null){
+      console.log(this.plantControl.value.id);
     }else{
       console.log('rego is null');
     }
     
     this.date.setHours(this.hours);
     this.date.setMinutes(this.minutes);
+    
 
-
-    this.trackingService.getPosition(this.control.value.id, this.date )
+    this.trackingService.getPosition(this.plantControl.value.id, this.date )
       .subscribe(result =>{
         if(!result){
           this.snackBar.open("Can't find any data from the server.", '', {
@@ -78,6 +87,8 @@ export class HistoryControlFormComponent implements OnInit {
           this.showProgress = false;
         }else{
         this.result = result;
+        result.fleetNo = this.plantControl.value.fleetNo;
+        result.timestamp = this.date;
         this.onGoClick.emit(result);
         this.showProgress = false;
         }
@@ -85,7 +96,7 @@ export class HistoryControlFormComponent implements OnInit {
 
       localStorage.setItem(localstorageKey, JSON.stringify({
         date : this.date,
-        controlValue : this.control.value,
+        controlValue : this.plantControl.value,
         hours: this.hours,
         minutes: this.minutes
       }));
@@ -95,11 +106,12 @@ export class HistoryControlFormComponent implements OnInit {
 
   onClear(): void {
     console.log('clear!');
-    this.control.reset();
+    this.plantControl.reset();
     this.date = null;
     this.hours = null;
     this.minutes = null;
     this.result = null;
+    this.onClearClick.emit();
   }
 
   getVehicles(){
@@ -115,7 +127,6 @@ export class HistoryControlFormComponent implements OnInit {
   }
 
   filter(val: string): Plant[] {
-    console.log(val);
     let feed: string;
     if(val === null){
       feed = '';
@@ -131,11 +142,10 @@ export class HistoryControlFormComponent implements OnInit {
     return plant ? plant.fleetNo : undefined;
   }
 
-  processKeyUp(event, element){
-    console.log(event);
-    console.log(this.hours);
-    if(this.hours.toString().length === 2){
-      element.focus();
+  processChange(hoursValue, element){
+    console.log(hoursValue);
+    if(hoursValue.length === 2){
+    element.focus();
     }
   }
 }

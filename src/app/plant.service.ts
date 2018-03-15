@@ -35,7 +35,7 @@ export class PlantService {
   }
 
   getGoogleSheetPlantList(): Observable<any[]> {
-    const sheetsDataUrl = 'http://localhost:3001/plants'
+    const sheetsDataUrl = 'https://dempseywoodgps.tk/api/plants'
     return this.http.get<any>(sheetsDataUrl,)
       .pipe(
       tap(plants => console.log(plants.length)),
@@ -46,7 +46,7 @@ export class PlantService {
   }
 
   getProjectList(): Observable<any[]> {
-    const sheetsDataUrl = 'http://localhost:3001/projects'
+    const sheetsDataUrl = 'https://dempseywoodgps.tk/api/projects'
     return this.http.get<any>(sheetsDataUrl,)
       .pipe(
       tap(projects => console.log(projects.length)),

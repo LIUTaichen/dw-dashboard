@@ -54,6 +54,18 @@ export class HistoryTravellerComponent implements OnInit {
       console.log('empty event payload');
       return;
     }
+    if(!input.lat || !input.lng){
+      console.log('empty lat lng');
+      return;
+    }
+    let popupString : string = '<div>Plant No : ' + input.fleetNo + '</div>';
+    popupString +='<div>Time : ' + input.timestamp + '</div>'
+    popupString +='<div>Status : ' + input.status + '</div>'
+    popupString += '<div> ' + input.info + ' </div>';
+    if(input.stopStartTime){
+      popupString+= '<div>Stopped from ' + new Date(input.stopStartTime) + ' to ' + new Date(input.stopEndTime) + '</div>';
+    }
+    
     this.map.panTo([input.lat, input.lng]);
     console.log("in parent, getting ", input);
     let mapFeature = marker([input.lat, input.lng], {
@@ -63,10 +75,14 @@ export class HistoryTravellerComponent implements OnInit {
         iconUrl: 'leaflet/marker-icon.png',
         shadowUrl: 'leaflet/marker-shadow.png'
       })
-    }).bindPopup('<div>Status : ' + input.status + '</div><div> ' + input.info + ' </div><div>Stopped from ' + new Date(input.stopStartTime) + ' to ' + new Date(input.stopEndTime) + '</div>');
+    }).bindPopup(popupString);
    
     this.layers.push(mapFeature);
     
+  }
+
+  clearMap(input: any){
+    this.layers = new Array<Layer>(); 
   }
 
 }
