@@ -26,8 +26,6 @@ export class TopMenuComponent implements OnInit {
     if(this.service.userInfo.authenticated){
       this.user =  this.service.userInfo.profile.name;
       console.log(this.service.userInfo.profile);
-    }else{
-      this.service.login();
     }
   }
 

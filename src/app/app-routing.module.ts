@@ -7,7 +7,7 @@ import { MapComponent } from './map/map.component';
 import { TaskListComponent } from './task-list/task-list.component';
 import { InstallationStatusMapComponent } from './installation-status-map/installation-status-map.component';
 import { HistoryTravellerComponent } from './history-traveller/history-traveller.component';
-
+import { AuthGuardService } from './auth-guard/auth-guard.service';
 
 
 const routes: Routes = [
@@ -15,6 +15,7 @@ const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
   { path: '', redirectTo: '/maps', pathMatch: 'full' },
   { path: 'app/:id', component: AppCardComponent},
+  // { path: 'maps', component: MapComponent, canActivate: [AuthGuardService]},
   { path: 'maps', component: MapComponent},
   { path: 'tasks', component: TaskListComponent},
   { path: 'maps/installation', component: InstallationStatusMapComponent},

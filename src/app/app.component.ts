@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
 
 import { Adal5Service } from 'adal-angular5';
-import { adal } from 'adal-angular';
 
 
-const config: adal.Config = {                           
-  tenant: 'dempseywood.co.nz',                      
-  clientId: '1fa7f23e-341d-40d8-b624-7e0ac2c329a9'    
-}    
+
+// const config: adal.Config = {                           
+//   tenant: 'dempseywood.co.nz',                      
+//   clientId: '1fa7f23e-341d-40d8-b624-7e0ac2c329a9'    
+// }    
 
 @Component({
   selector: 'app-root',
@@ -19,7 +19,7 @@ export class AppComponent {
   username: string;
 
   constructor(private service: Adal5Service) {      
-    this.service.init(config);                      
+   // this.service.init(config);                      
   }    
   ngOnInit(){
     // Handle callback if this is a redirect from Azure
@@ -27,7 +27,8 @@ export class AppComponent {
 
     // Check if the user is authenticated. If not, call the login() method
     if (!this.service.userInfo.authenticated) {
-      
+      console.log('not logged in, starting sign in process');
+      //this.service.login();
     }else{
 
       // Log the user information to the console

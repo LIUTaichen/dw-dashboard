@@ -24,7 +24,7 @@ export class HistoryControlFormComponent implements OnInit {
   date: Date;
   hours: number;
   minutes: number;
-  plantControl: FormControl = new FormControl(this.selectedPlant);
+  plantControl: FormControl = new FormControl(this.selectedPlant, this.plantIdValidator);
   options: Plant[] = new Array<Plant>();
   filteredOptions: Observable<Plant[]>;
   regoFieldReady: boolean = false;
@@ -77,7 +77,6 @@ export class HistoryControlFormComponent implements OnInit {
     this.date.setHours(this.hours);
     this.date.setMinutes(this.minutes);
     
-
     this.trackingService.getPosition(this.plantControl.value.id, this.date )
       .subscribe(result =>{
         if(!result){
@@ -147,5 +146,26 @@ export class HistoryControlFormComponent implements OnInit {
     if(hoursValue.length === 2){
     element.focus();
     }
+  }
+
+  plantIdValidator(control: FormControl) { 
+    console.log('validator invoked');
+    console.log('value', control.value);
+    //console.log('selectedplant', this.selectedPlant);
+    let plant = control.value; 
+    if(plant === null){
+      console.log('returning error');
+      return {
+        rego: {
+          error: 'empty rego'
+        }
+      }
+    }
+    // if(this.selectedPlant === null){
+    //   return{
+    //     error: 'no selected plant'
+    //   }
+    // }
+    return null; 
   }
 }

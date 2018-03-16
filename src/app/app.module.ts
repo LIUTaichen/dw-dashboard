@@ -52,6 +52,8 @@ import { HistoryTravellerComponent } from './history-traveller/history-traveller
 import { HistoryControlFormComponent } from './history-control-form/history-control-form.component';
 import { HistorySearchResultComponent } from './history-search-result/history-search-result.component';
 import { PlantNumberValidatorDirective } from './plant-number-validator/plant-number-validator.directive';
+import { AuthGuardService } from './auth-guard/auth-guard.service';
+import { AuthService } from './auth/auth.service';
 
 
 @NgModule({
@@ -105,6 +107,7 @@ import { PlantNumberValidatorDirective } from './plant-number-validator/plant-nu
   ],
   providers: [
     AppService,
+    { provide: MAT_DATE_LOCALE, useValue: 'en-NZ'},
     MessageService,
     Adal5Service,
     { provide: Adal5HTTPService, useFactory: Adal5HTTPService.factory, deps: [HttpClient, Adal5Service] },
@@ -113,7 +116,8 @@ import { PlantNumberValidatorDirective } from './plant-number-validator/plant-nu
     TaskService,
     ProjectService,
     TrackingService,
-    {provide: MAT_DATE_LOCALE, useValue: 'en-NZ'},
+    AuthGuardService,
+    AuthService,
   ],
   bootstrap: [AppComponent]
 })
